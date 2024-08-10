@@ -4,7 +4,8 @@ To build, please follow the following instructions:
 - `cd src/opus/` to get into the opus directory
 - look at the README to find what dependencies you need to install
 - `mkdir build` to create the build folder in `src/opus/`
-- run `cmake ..` to setup the cmake build files to build the static library
+- run `cmake -DCMAKE_POSITION_INDEPENDENT_CODE=ON ..` to setup the cmake build files to build the static library
+  - the flag `-DCMAKE_POSITION_INDEPENDENT_CODE=ON` tells the opus static library to compile in a way that is usable when being embedded in a shared library like a gdextension. this is the cmake equivalent to -fPIC
 - run `cmake --build .` to actually build the library file
 - once you've built opus, you should have a libopus file in `src/opus/build/`, if that's true then good job!
 - now you'll want to go to the project root and simply run `scons` (obviously you can also run scons with arguments, ex: apple silicon macs need to run it like this: `scons platform=macos arch=arm64`)
