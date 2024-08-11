@@ -31,14 +31,14 @@ sources = Glob("src/*.cpp")
 
 if env["platform"] == "macos":
     library = env.SharedLibrary(
-        "gdextensiontest/bin/libgdopusencoder.{}.{}.framework/libgdopusencoder.{}.{}".format(
+        "gdextensiontest/addons/gdopus/libgdopusencoder.{}.{}.framework/libgdopusencoder.{}.{}".format(
             env["platform"], env["target"], env["platform"], env["target"]
         ),
         source=sources,
     )
 else:
     library = env.SharedLibrary(
-        "gdextensiontest/bin/libgdopusencoder{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
+        "gdextensiontest/addons/gdopus/libgdopusencoder{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
         source=sources,
     )
 
