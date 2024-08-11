@@ -205,5 +205,5 @@ venv
 *.lib
 *.x86_64
 
-/gdextensiontest/exports/
-/gdextensiontest/export/
+gdextensiontest/exports/
+gdextensiontest/export/
