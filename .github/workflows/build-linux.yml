@@ -54,6 +54,7 @@ jobs:
         cd build
         cmake -DCMAKE_POSITION_INDEPENDENT_CODE=ON ..
         cmake --build .
+        ls
 
      - name: compile extension with scons
        run: |
