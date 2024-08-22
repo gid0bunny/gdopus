@@ -33,7 +33,7 @@ jobs:
      - name: compile extension with scons
        run: |
         cd gdopus/
-        scons
+        scons platform=Windows
      - uses: actions/upload-artifact@v4
        with:
          name: windows build files
