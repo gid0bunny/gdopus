@@ -13,7 +13,8 @@ env = SConscript("godot-cpp/SConstruct")
 # - LINKFLAGS are for linking flags
 
 if env["platform"] == "windows":
-    env.Append(LIBPATH=["src/opus/build-win/Release"])
+#    env.Append(LIBPATH=["src/opus/build-win/Release"])
+    env.Append(LIBPATH=["src/opus/build-win/"])
 else:
     env.Append(LIBPATH=["src/opus/build/"])
 
@@ -23,7 +24,7 @@ env.Append(LIBS=["opus"])
 # env.Append(CXXDEFINES=["EMCC_FORCE_STDLIBS=1"])
 # env.Append(CPPDEFINES=["EMCC_FORCE_STDLIBS=1"])
 # env.Append(CXXFLAGS=['-fstack-protector'])
-#env.Append(CXXFLAGS=['-fPIC'])
+# env.Append(CXXFLAGS=['-fPIC'])
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 env.Append(CPPPATH=["src/"])
@@ -31,14 +32,14 @@ sources = Glob("src/*.cpp")
 
 if env["platform"] == "macos":
     library = env.SharedLibrary(
-        "gdextensiontest/addons/gdopus/libgdopusencoder.{}.{}.framework/libgdopusencoder.{}.{}".format(
+        "gdextensiontest/bin/libgdopusencoder.{}.{}.framework/libgdopusencoder.{}.{}".format(
             env["platform"], env["target"], env["platform"], env["target"]
         ),
         source=sources,
     )
 else:
     library = env.SharedLibrary(
-        "gdextensiontest/addons/gdopus/libgdopusencoder{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
+        "gdextensiontest/bin/libgdopusencoder{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
         source=sources,
     )
 
