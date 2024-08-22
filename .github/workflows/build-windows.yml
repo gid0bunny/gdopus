@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   compile-for-windows:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
      - name: Set up Python
        uses: actions/setup-python@v3
@@ -12,6 +12,11 @@ jobs:
      - name: Install SCons
        run: |
          pip install scons
+
+     - name: Set up MinGW
+       uses: egor-tensin/setup-mingw@v2
+       with:
+         platform: x64
 
      - name: clone repository and submodules
        run: git clone https://github.com/zodywoolsey/gdopus --recurse-submodules
@@ -21,7 +26,7 @@ jobs:
         cd gdopus/src/opus
         mkdir build-win
         cd build-win
-        cmake -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_MSVC_RUNTIME_LIBRARY="MultiThreaded" ..
+        cmake -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_MSVC_RUNTIME_LIBRARY="MultiThreaded" -DCMAKE_C_COMPILER=x86_64-w64-mingw32-gcc -DCMAKE_CXX_COMPILER=x86_64-w64-mingw32-g++ ..
         cmake --build . --config Release
         ls
 
