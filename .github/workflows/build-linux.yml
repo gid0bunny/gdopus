@@ -1,4 +1,4 @@
-name: build
+name: build-linux
 
 on: [push]
 
@@ -31,38 +31,6 @@ jobs:
      - uses: actions/upload-artifact@v4
        with:
          name: linux build files
-         path: gdopus/gdextensiontest/bin/
-         overwrite: true
-     - run: echo "finished, artifacts should be named 'extension files'"
-  compile-for-windows:
-    runs-on: windows-latest
-    steps:
-     - name: Set up Python
-       uses: actions/setup-python@v3
-
-     - name: Install SCons
-       run: |
-         pip install scons
-
-     - name: clone repository and submodules
-       run: git clone https://github.com/zodywoolsey/gdopus --recurse-submodules
-
-     - name: build opus static library with -fPIC
-       run: |
-        cd gdopus/src/opus
-        mkdir build
-        cd build
-        cmake -DCMAKE_POSITION_INDEPENDENT_CODE=ON ..
-        cmake --build . --config Release
-        ls
-
-     - name: compile extension with scons
-       run: |
-        cd gdopus/
-        scons
-     - uses: actions/upload-artifact@v4
-       with:
-         name: windows build files
          path: gdopus/gdextensiontest/bin/
          overwrite: true
      - run: echo "finished, artifacts should be named 'extension files'"
