@@ -19,8 +19,8 @@ jobs:
      - name: build opus static library with -fPIC
        run: |
         cd gdopus/src/opus
-        mkdir build
-        cd build
+        mkdir build-win
+        cd build-win
         cmake -DCMAKE_POSITION_INDEPENDENT_CODE=ON ..
         cmake --build . --config Release
         ls
