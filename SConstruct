@@ -15,6 +15,10 @@ env = SConscript("godot-cpp/SConstruct")
 if env["platform"] == "windows":
 #    env.Append(LIBPATH=["src/opus/build-win/Release"])
     env.Append(LIBPATH=["src/opus/build-win/"])
+elif env["platform"] == "android":
+    env.Append(LIBPATH=["src/opus/build-android"])
+elif env["platform"] == "macos":
+    env.Append(LIBPATH=["src/opus/build-android"])
 else:
     env.Append(LIBPATH=["src/opus/build/"])
 

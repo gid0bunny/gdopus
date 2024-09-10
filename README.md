@@ -12,6 +12,15 @@ To build, please follow the following instructions:
 - that should be it. it will build the gdextension and place the resulting lib in the test project's bin directory
   - you should be able to find the resulting gdextension in `gdextensiontest/bin/` and it should start with `libgdopusencoder`
 
+## ANDROID
+- install android commandline tools for your platform using sdkmanager to get the latest version
+- `cd src/opus; mkdir build-android; cd build-android`
+- `cmake .. -DCMAKE_TOOLCHAIN_FILE={$ANDROID_HOME}/ndk/23.2.858313/build/cmake/android.toolchain.camke -DANDROID_ABI=arm64-v8a`
+  - you can replace 23.2.8568313 with whatever version of the ndk got downloaded with the commandline tools thing
+- `cmake --build . --config Release`
+- cd to the root of the project (gdopus/)
+- `scons platform=android`
+
 please keep in mind this is still in early development and will change in the future.
 right now this repo simply contains the most basic implementation of the opus library so I could use it for learning purposes and for a quick voip utility.
 future updates will flesh out the features, stay tuned.
